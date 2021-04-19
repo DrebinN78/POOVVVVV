@@ -14,23 +14,24 @@ public class Ennemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveVertical) VerticalMovement();
-        else HorizontalMovement();
+        EnnemyMovement();
     }
 
-    private void VerticalMovement()
+    private void EnnemyMovement()
     {
-        transform.Translate(0, firstDir ? Speed : -Speed, 0);
-    }
+        Vector3 newPos = transform.position;
 
-    private void HorizontalMovement()
-    {
-        transform.Translate(firstDir ? Speed : -Speed, 0, 0);
+        if (moveVertical)
+            newPos.y += (firstDir ? Speed : -Speed) * Time.deltaTime; //Deplacement axe vertical
+        else
+            newPos.x += (firstDir ? Speed : -Speed) * Time.deltaTime; //Déplacement axe horizontal
+
+        transform.position = newPos;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Decor") || collision.gameObject.CompareTag("Ennemy"))
-            firstDir = !firstDir;
+        firstDir = !firstDir; //Change de direction s'il touche quelque chose/n'importe quoi
     }
 }
