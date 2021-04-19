@@ -8,8 +8,10 @@ public class MovingPlateform : MonoBehaviour
     public float speed = 1f;
 
     private List<Vector3> points = new List<Vector3>();
+    private Vector3 point;
     private Vector3 targetPoint;
-    private Vector3 directionNormalized;
+    private float distance;
+    private float actualDistance;
     private int idxPoint = 0;
 
     void Awake()
@@ -22,21 +24,26 @@ public class MovingPlateform : MonoBehaviour
         }
 
         targetPoint = points[idxPoint];
-        directionNormalized = (targetPoint - gameObject.transform.position).normalized;
+        point = points[points.Count - 1];
+        distance = Vector3.Distance(point, targetPoint);
     }
 
     void Update()
     {
         if (points.Count > 1)
         {
-            gameObject.transform.position += Time.deltaTime * speed * directionNormalized;
-            if (Vector3.Angle((targetPoint - gameObject.transform.position).normalized, directionNormalized) > 90)
+            actualDistance += Time.deltaTime * speed;
+            actualDistance = Mathf.Min(actualDistance, distance);
+            gameObject.transform.position = Vector3.Lerp(point, targetPoint, actualDistance / distance);
+            if (actualDistance == distance)
             {
+                point = points[idxPoint];
                 idxPoint++;
                 if (idxPoint >= points.Count)
                     idxPoint = 0;
                 targetPoint = points[idxPoint];
-                directionNormalized = (targetPoint - gameObject.transform.position).normalized;
+                distance = Vector3.Distance(point, targetPoint);
+                actualDistance = 0;
             }
         }
     }
