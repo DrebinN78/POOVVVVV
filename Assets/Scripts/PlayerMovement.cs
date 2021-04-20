@@ -23,10 +23,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform RightWallCheckPoint;
     [SerializeField] Transform LeftWallCheckPoint;
     private BoxCollider2D[] groundCheckColliders;
+    private List<BoxCollider2D> groundList = new List<BoxCollider2D>();
+    private BoxCollider2D playerCollider;
 
     private void Start()
     {
-        groundCheckColliders = FindObjectsOfType<BoxCollider2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
+        groundCheckColliders = FindObjectsOfType<BoxCollider2D>(false);
+        foreach (BoxCollider2D col in groundCheckColliders)
+        {
+            if (col != playerCollider)
+            {
+                groundList.Add(col);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -83,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
     void UpdateGroundCheck()
     {
         BoxCollider2D colliderFound = null;
-        foreach (BoxCollider2D collider in groundCheckColliders)
+        foreach (BoxCollider2D collider in groundList)
         {
             if (IsPointInsideBox(new Vector2(GroundCheckPoint.position.x, GroundCheckPoint.position.y), collider))
             {
@@ -137,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateRightWallCheck()
     {
         BoxCollider2D colliderFound = null;
-        foreach (BoxCollider2D collider in groundCheckColliders)
+        foreach (BoxCollider2D collider in groundList)
         {
             if (IsPointInsideBox(new Vector2(RightWallCheckPoint.position.x, RightWallCheckPoint.position.y), collider))
             {
@@ -168,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateLeftWallCheck()
     {
         BoxCollider2D colliderFound = null;
-        foreach (BoxCollider2D collider in groundCheckColliders)
+        foreach (BoxCollider2D collider in groundList)
         {
             if (IsPointInsideBox(new Vector2(LeftWallCheckPoint.position.x, LeftWallCheckPoint.position.y), collider))
             {
