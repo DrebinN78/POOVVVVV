@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 5575748675625125747}
   - component: {fileID: 5575748675625125746}
   - component: {fileID: 5575748675625125745}
+  - component: {fileID: 6971294683906605702}
   m_Layer: 0
   m_Name: ConveyerPlatform
   m_TagString: Untagged
@@ -167,7 +168,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5824596, y: 0.11576082}
+  m_Size: {x: 1.5824596, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &5575748675625125745
 MonoBehaviour:
@@ -183,3 +184,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingRight: 1
   movementSpeed: 1
+--- !u!61 &6971294683906605702
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575748675625125744}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000059604645, y: -0.061854452}
+  m_SpriteTilingProperty:
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1.6060559, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5824596, y: 0.1}
+  m_EdgeRadius: 0
