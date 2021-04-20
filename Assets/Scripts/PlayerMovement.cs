@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void ChangeGravity()
+    public void ChangeGravity()
     {
         gravity *= -1;
         transform.Rotate(Vector3.forward, 180);

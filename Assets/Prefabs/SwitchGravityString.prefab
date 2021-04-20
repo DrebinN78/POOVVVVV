@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7179766878854054700}
   - component: {fileID: 7179766878854054702}
   - component: {fileID: 7179766878854054703}
+  - component: {fileID: 2099663197}
   m_Layer: 0
   m_Name: SwitchGravityString
   m_TagString: GravitySwitch
@@ -110,3 +111,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 24, y: 24}
   m_EdgeRadius: 0
+--- !u!114 &2099663197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179766878854054701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08301bee5194354fbb6d913914d353b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
