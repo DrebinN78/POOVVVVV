@@ -19,10 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private float ySpeed = 0f;
 
     [Header("Ground and Wall Checks")]
-    private BoxCollider2D[] groundCheckColliders;
     [SerializeField] Transform GroundCheckPoint;
     [SerializeField] Transform RightWallCheckPoint;
     [SerializeField] Transform LeftWallCheckPoint;
+    private BoxCollider2D[] groundCheckColliders;
 
     private void Start()
     {
@@ -77,27 +77,11 @@ public class PlayerMovement : MonoBehaviour
         {
             ySpeed += yAcceleration * gravity * Time.deltaTime;
             ySpeed = Mathf.Clamp(ySpeed, -maxYSpeed, maxYSpeed);
-            //ySpeed = gravity;
         }
     }
 
     void UpdateGroundCheck()
     {
-        //raycast vers le bas
-        //Ray ray = new Ray(transform.position, -transform.up);
-        //if (debugMode)
-        //{
-        //    Debug.DrawRay(ray.origin, ray.direction * rayLenght, Color.red);
-        //}
-        //if (Physics.Raycast(ray.origin, ray.direction, out hit, rayLenght))
-        //{
-        //    if (hit.transform.gameObject.CompareTag("Ground"))
-        //    {
-        //        ySpeed = 0f;
-        //    }
-        //}
-
-        //
         BoxCollider2D colliderFound = null;
         foreach (BoxCollider2D collider in groundCheckColliders)
         {
@@ -211,6 +195,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void SetAllGroundColliders(BoxCollider2D[] listBoxCollider)
+    {
+        groundCheckColliders = listBoxCollider;
+    }
+
     private void OnGUI()
     {
         if (!debugMode) return;
@@ -218,6 +207,8 @@ public class PlayerMovement : MonoBehaviour
         GUILayout.BeginVertical();
         GUILayout.Label("xEffect = " + xEffect);
         GUILayout.Label("isOnGround = " + isOnGround);
+        GUILayout.Label("gravity = " + gravity);
+        GUILayout.Label("ySpeed = " + ySpeed);
         GUILayout.EndVertical();
     }
 }
