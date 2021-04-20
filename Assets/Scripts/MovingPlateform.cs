@@ -16,6 +16,8 @@ public class MovingPlateform : MonoBehaviour
     private float actualStartDelay;
     private int idxPoint = 0;
 
+    private Transform playerParent;
+
     void Awake()
     {
         pointsTransform.Add(gameObject.transform);
@@ -51,6 +53,23 @@ public class MovingPlateform : MonoBehaviour
         else if (actualStartDelay < startDelay)
         {
             actualStartDelay += Time.deltaTime;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerParent = other.transform.parent;
+            other.transform.parent = this.transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.parent = playerParent;
         }
     }
 }
