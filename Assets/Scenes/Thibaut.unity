@@ -489,6 +489,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7382187922352271016, guid: 15c7b339089883e4785c99c09bd0e84e, type: 3}
+      propertyPath: startDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382187922352271016, guid: 15c7b339089883e4785c99c09bd0e84e, type: 3}
       propertyPath: points.Array.size
       value: 3
       objectReference: {fileID: 0}
