@@ -5,42 +5,20 @@ using UnityEngine;
 
 public class GravitySwitch : MonoBehaviour
 {
-    public GameObject player; //change to type "Player"
+    /*private PlayerMovement player; //change to type "Player"
     private Rigidbody2D rb;
 
     void Start()
     {
-        //player = GetComponent<Player>();
+        player = GameObject.FindObjectOfType<PlayerMovement>();
         rb = player.GetComponent<Rigidbody2D>();
-    }
+    }*/
 
-    void Update()
+    /*void OnTriggerEnter2D(Collider2D other)
     {
-        //Change input mode for no errors
-       /* if (Input.GetKeyDown(KeyCode.Space) && player.isOnGround)
+        if (other.gameObject.CompareTag("GravitySwitch"))
         {
-            SwitchGravity();
-        }*/
-    }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("SwitchString"))
-        {
-            SwitchGravity();
+            ChangeGravity();
         }
-    }
-
-    void SwitchGravity()
-    {
-        if (rb.gravityScale == 1)
-        {
-            rb.gravityScale = -1;
-
-        }
-        else
-        {
-            rb.gravityScale = 1;
-        }
-    }
+    }*/
 }

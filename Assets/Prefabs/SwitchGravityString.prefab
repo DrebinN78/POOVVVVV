@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7179766878854054703}
   m_Layer: 0
   m_Name: SwitchGravityString
-  m_TagString: SwitchString
+  m_TagString: GravitySwitch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
