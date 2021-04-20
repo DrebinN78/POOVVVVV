@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         groundCheckColliders = FindObjectsOfType<BoxCollider2D>(false);
         foreach (BoxCollider2D col in groundCheckColliders)
         {
-            if (col != playerCollider)
+            if (col != playerCollider && (col.CompareTag("Ground") || col.CompareTag("Wall")))
             {
                 groundList.Add(col);
             }
@@ -220,5 +220,13 @@ public class PlayerMovement : MonoBehaviour
         GUILayout.Label("gravity = " + gravity);
         GUILayout.Label("ySpeed = " + ySpeed);
         GUILayout.EndVertical();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Ennemy"))
+        {
+            transform.position = GameManager.Instance.Respawn();
+        }
     }
 }

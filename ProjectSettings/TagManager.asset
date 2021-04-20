@@ -7,6 +7,8 @@ TagManager:
   - Ennemy
   - Decor
   - GravitySwitch
+  - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX

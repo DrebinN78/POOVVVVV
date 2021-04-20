@@ -13,7 +13,7 @@ public class DestroyablePlatform : MonoBehaviour
         _anim = GetComponent<Animation>();
         _anim["DestroyPlatform"].speed = destroySpeed;
     }
-    private void OnTriggerEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.transform.CompareTag("Player") && !gotTriggered)
         {
