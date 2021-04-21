@@ -42,25 +42,25 @@ public class CameraSwitch : MonoBehaviour
         if (screenPos.x < 0)
         {
             Debug.Log("Switch Camera Left");
-            transform.position = new Vector2(transform.position.x - cameraWidth, transform.position.y);
+            transform.position = new Vector3(transform.position.x - cameraWidth, transform.position.y, transform.position.z);
         }
 
         if (screenPos.x > Screen.width)
         {
             Debug.Log("Switch Camera Right");
-            transform.position = new Vector2(transform.position.x + cameraWidth, transform.position.y);
+            transform.position = new Vector3(transform.position.x + cameraWidth, transform.position.y, transform.position.z);
         }
 
         if (screenPos.y < 0)
         {
             Debug.Log("Switch Camera Down");
-            transform.position = new Vector2(transform.position.x, transform.position.y - cameraHeight);
+            transform.position = new Vector3(transform.position.x, transform.position.y - cameraHeight, transform.position.z);
         }
 
         if (screenPos.y > Screen.height)
         {
             Debug.Log("Switch Camera Up");
-            transform.position = new Vector2(transform.position.x, transform.position.y + cameraHeight);
+            transform.position = new Vector3(transform.position.x, transform.position.y + cameraHeight, transform.position.z);
         }
     }
 }
