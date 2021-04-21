@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraSwitch : MonoBehaviour
 {
+    enum Direction { Right, Left, Up, Down};
 
     //Player Infos
     [SerializeField]
@@ -11,17 +12,17 @@ public class CameraSwitch : MonoBehaviour
     private Vector2 screenPos;
 
     //Camera Infos
-    private Camera camera;
+    private Camera cam;
     //Camera Width & Height in Units
     private float cameraWidth, cameraHeight;
 
 
     void Awake()
     {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
 
-        cameraHeight = camera.orthographicSize * 2;
-        cameraWidth = cameraHeight * camera.aspect;
+        cameraHeight = cam.orthographicSize * 2;
+        cameraWidth = cameraHeight * cam.aspect;
     }
 
     private void Start()
@@ -31,8 +32,13 @@ public class CameraSwitch : MonoBehaviour
 
     void Update()
     {
-        screenPos = camera.WorldToScreenPoint(player.transform.position);
+        screenPos = cam.WorldToScreenPoint(player.transform.position);
 
+        CameraSwitchManager();
+    }
+
+    void CameraSwitchManager()
+    {
         if (screenPos.x < 0)
         {
             Debug.Log("Switch Camera Left");
@@ -45,23 +51,16 @@ public class CameraSwitch : MonoBehaviour
             transform.position = new Vector2(transform.position.x + cameraWidth, transform.position.y);
         }
 
-        if(screenPos.y < 0)
+        if (screenPos.y < 0)
         {
             Debug.Log("Switch Camera Down");
             transform.position = new Vector2(transform.position.x, transform.position.y - cameraHeight);
         }
 
-        if(screenPos.y > Screen.height)
+        if (screenPos.y > Screen.height)
         {
             Debug.Log("Switch Camera Up");
             transform.position = new Vector2(transform.position.x, transform.position.y + cameraHeight);
         }
-
-    }
-
-    void MoveCameraX()
-    {
-
-
     }
 }
