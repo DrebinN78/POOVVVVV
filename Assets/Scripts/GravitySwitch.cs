@@ -18,6 +18,7 @@ public class GravitySwitch : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            player.ySpeed = player.ySpeed / 2;
             player.ChangeGravity();
         }
     }

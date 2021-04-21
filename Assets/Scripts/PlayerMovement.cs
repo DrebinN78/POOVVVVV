@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float maxYSpeed = 5f;
     [SerializeField] float yAcceleration = 1f;
     private int gravity = -1;
-    private float ySpeed = 0f;
+    [HideInInspector] public float ySpeed = 0f;
 
     [Header("Ground and Wall Checks")]
     [SerializeField] Transform GroundCheckPoint;
