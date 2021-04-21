@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     private List<BoxCollider2D> groundList = new List<BoxCollider2D>();
     private BoxCollider2D playerCollider;
 
+    [Header("Animation")]
+    [SerializeField] Animator animator;
+
     private void Start()
     {
         playerCollider = GetComponent<BoxCollider2D>();
@@ -56,10 +59,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             dirX = 1;
+            animator.SetBool("GoRight", true);
         }
         else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Q))
         {
             dirX = -1;
+            animator.SetBool("GoRight", false);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
@@ -127,7 +132,11 @@ public class PlayerMovement : MonoBehaviour
     public void ChangeGravity()
     {
         gravity *= -1;
-        transform.Rotate(Vector3.forward, 180);
+        animator.SetBool("InverseGravity", gravity == 1);
+        
+        Vector3 newLocalPos = GroundCheckPoint.localPosition;
+        newLocalPos.y *= -1;
+        GroundCheckPoint.localPosition = newLocalPos;
     }
 
     public void TapisRoulant(float xEffectSpeed)
@@ -160,18 +169,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 position = new Vector2(transform.position.x, transform.position.y);
             float offsetX = RightWallCheckPoint.position.x - transform.position.x;
-            if (gravity == -1)
-            {
-                position.x = colliderFound.bounds.min.x - offsetX;
-                if (dirX == 1) dirX = 0;
-            }
-            else
-            {
-                position.x = colliderFound.bounds.max.x - offsetX;
-                if (dirX == -1) dirX = 0;
-            }
-            //position.y = colliderFound.bounds.max.y + offsetY * gravity;
+            position.x = colliderFound.bounds.min.x - offsetX;
             transform.position = position;
+
+            if (dirX == 1) dirX = 0;
         }
     }
 
@@ -191,17 +192,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 position = new Vector2(transform.position.x, transform.position.y);
             float offsetX = LeftWallCheckPoint.position.x - transform.position.x;
-            if (gravity == -1)
-            {
-                position.x = colliderFound.bounds.max.x - offsetX;
-                if (dirX == -1) dirX = 0;
-            }
-            else
-            {
-                position.x = colliderFound.bounds.min.x - offsetX;
-                if (dirX == 1) dirX = 0;
-            }
+            position.x = colliderFound.bounds.max.x - offsetX;
             transform.position = position;
+
+            if (dirX == -1) dirX = 0;
         }
     }
 
