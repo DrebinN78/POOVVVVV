@@ -30,14 +30,14 @@ public class TilesManager : MonoBehaviour
     public Sprite[] tiles2;
     public Sprite[] tiles3;
 
-    //public Sprite levelTriggerSprite;
-
     public Material unlitMaterial;
 
     [HideInInspector]
     public List<GameObject> tilesMap = new List<GameObject>();
     [HideInInspector]
     public Vector2Int ActualLevel;
+    [HideInInspector]
+    public List<BoxCollider2D> solidTiles = new List<BoxCollider2D>();
 
     private GameObject TilesMap;
     private Vector3 startGenerationPosition;
@@ -55,8 +55,6 @@ public class TilesManager : MonoBehaviour
         TilesMap = new GameObject("TilesMap");
         startGenerationPosition = new Vector3(-levelSize.x / 2f + gapBetweenTiles / 2, levelSize.y / 2f - gapBetweenTiles / 2, 0);
         TilesMap.transform.position = startGenerationPosition;
-
-        //CreateLevelTriggers();
 
         levelLength = levelSize.x * levelSize.y;
 
@@ -76,62 +74,20 @@ public class TilesManager : MonoBehaviour
             if (map != null && tilePositionInMap < map.Length && map[tilePositionInMap] < tiles.Length)
             {
                 newSpriteRenderer.sprite = tiles[map[tilePositionInMap]];
-            }
-            newSpriteRenderer.material = unlitMaterial;
-            newTile.AddComponent<BoxCollider2D>();
+                newSpriteRenderer.material = unlitMaterial;
+                newTile.AddComponent<BoxCollider2D>();
 
-            // Add new tile in map list
-            tilesMap.Add(newTile);
+                // Add new tile in map list
+                tilesMap.Add(newTile);
+                
+                if (map[tilePositionInMap] >= 80 && map[tilePositionInMap] <= 678)
+                    solidTiles.Add(tilesMap[i].GetComponent<BoxCollider2D>());
+            }
+
         }
         // Set actual level
         if (tilesMap.Count == levelLength)
             ActualLevel = new Vector2Int(startinglevelPositionInMap.x, startinglevelPositionInMap.y);
-    }
-
-    public void CreateLevelTriggers()
-    {
-        /*GameObject parent = new GameObject("LevelTriggers");
-        parent.transform.parent = TilesMap.transform;
-        parent.transform.localPosition = new Vector3(0, 0, 0);
-
-        // Top trigger
-        GameObject topTrigger = new GameObject("TopTrigger", typeof(SpriteRenderer));
-        topTrigger.transform.parent = parent.transform;
-
-        topTrigger.transform.localPosition = new Vector3(levelSize.x / 2 - gapBetweenTiles / 2, 1 + gapBetweenTiles / 2, 0);
-        topTrigger.transform.localScale = new Vector3(levelSize.x, 1, 1);
-        SpriteRenderer topTriggerSR = topTrigger.GetComponent<SpriteRenderer>();
-        topTriggerSR.sprite = levelTriggerSprite;
-
-        topTrigger.AddComponent<BoxCollider2D>();
-        topTriggerSR.material = unlitMaterial;
-
-        // Down trigger
-        GameObject downTrigger = new GameObject("TopTrigger", typeof(SpriteRenderer));
-        downTrigger.transform.parent = parent.transform;
-
-        downTrigger.transform.localPosition = new Vector3(levelSize.x / 2 - gapBetweenTiles / 2, -levelSize.y - gapBetweenTiles / 2, 0);
-        downTrigger.transform.localScale = new Vector3(levelSize.x, 1, 1);
-        SpriteRenderer downTriggerSR = downTrigger.GetComponent<SpriteRenderer>();
-        downTriggerSR.sprite = levelTriggerSprite;
-
-        downTrigger.AddComponent<BoxCollider2D>();
-        downTriggerSR.material = unlitMaterial;
-
-        // Left Trigger
-
-        GameObject leftTrigger = new GameObject("TopTrigger", typeof(SpriteRenderer));
-        leftTrigger.transform.parent = parent.transform;
-
-        leftTrigger.transform.localPosition = new Vector3(-gapBetweenTiles / 2, -levelSize.y / 2, 0);
-        leftTrigger.transform.localScale = new Vector3(1, levelSize.y, 1);
-        SpriteRenderer leftTriggerSR = leftTrigger.GetComponent<SpriteRenderer>();
-        leftTriggerSR.sprite = levelTriggerSprite;
-
-        leftTrigger.AddComponent<BoxCollider2D>();
-        leftTriggerSR.material = unlitMaterial;*/
-
-        // Right Trigger
     }
 
     public int GetTilePositionInMap(Vector2Int tilePositionInLevel, Vector2Int levelPositionInMap)
@@ -145,6 +101,9 @@ public class TilesManager : MonoBehaviour
     {
         if (ActualLevel == null)
             return;
+
+        solidTiles.Clear();
+
         // Set tiles sprite
         for (int i = 0; i < levelLength; i++)
         {
@@ -157,6 +116,8 @@ public class TilesManager : MonoBehaviour
             if (map != null && tilePositionInMap < map.Length && map[tilePositionInMap] < tiles.Length)
             {
                 newSpriteRenderer.sprite = tiles[map[tilePositionInMap]];
+                if (map[tilePositionInMap] >= 80 && map[tilePositionInMap] <= 678)
+                    solidTiles.Add(tilesMap[i].GetComponent<BoxCollider2D>());
             }
         }
 
