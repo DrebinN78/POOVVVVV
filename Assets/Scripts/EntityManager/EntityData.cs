@@ -6,4 +6,5 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     public GameObject[] Prefab;
+    public IEntity[] EntitiesPrefabs;
 }

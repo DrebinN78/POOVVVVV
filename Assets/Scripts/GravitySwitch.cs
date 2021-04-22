@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GravitySwitch : MonoBehaviour
+public class GravitySwitch : MonoBehaviour, IEntity
 {
     private PlayerMovement player;
     private Rigidbody2D rb;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyablePlatform : MonoBehaviour
+public class DestroyablePlatform : MonoBehaviour, IEntity
 {
     public float destroySpeed = 1.0f;
     private Animation _anim;

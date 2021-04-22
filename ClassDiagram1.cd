@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConveyerPlatform" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACAAAQAAAAAAAAAAAEAAAAAIAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\ConveyerPlatform.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.156" />
+  </Class>
+  <Class Name="CheckPoint" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACAAAAgAAIAAAAAAEEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CheckPoint\CheckPoint.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.3" />
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAACAACAAAAAAAAAAAABAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\CheckPoint\GameManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_currentCheckpoint" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DestroyablePlatform" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAEAAEAIAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\DestroyablePlatform.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.575" />
+  </Class>
+  <Class Name="Ennemy" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAAAAAAAAAABIEAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\Ennemy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="EntityData" Collapsed="true">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\EntityManager\EntityData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="EntitiesPrefabs" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Entity" Collapsed="true">
+    <Position X="12.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EntityManager\EntityManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityManager" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAABABAAAAAAAQAAAAAAQAAQAASQAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\EntityManager\EntityManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="data" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="entities" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GravitySwitch" Collapsed="true">
+    <Position X="15" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAEAAAAAAAAAEAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GravitySwitch.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="player" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MovingPlateform" Collapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAACCQAAAAAAAAAIQAIAAAAEAAAQABAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\MovingPlateform.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerMovement" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAQEoCICAgECAAAAAQICABDEoABwQIAACAIABAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TilesManager" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFEQAAACAFgAgACQEAQAAAAgACAAgAUAAAFAAAAkA=</HashCode>
+      <FileName>Assets\Scripts\TilesManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IEntity" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

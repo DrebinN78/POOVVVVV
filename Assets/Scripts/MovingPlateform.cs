@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlateform : MonoBehaviour
+public class MovingPlateform : MonoBehaviour, IEntity
 {
     public List<Transform> pointsTransform;
     public float speed = 1f;

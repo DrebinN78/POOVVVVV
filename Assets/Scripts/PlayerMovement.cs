@@ -32,12 +32,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float maxXMap = 40;
     [SerializeField] float minYMap = -20;
     [SerializeField] float maxYMap = 20;
-    private TilesManager tilesManager;
 
     private void Start()
     {
-        tilesManager = TilesManager.Instance;
-        SetAllGroundColliders(tilesManager.solidTiles);
+        SetAllGroundColliders(TilesManager.Instance.solidTiles);
     }
 
     // Update is called once per frame
@@ -230,23 +228,23 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.x > maxXMap)
         {
             newPos.x = minXMap + 1;
-            tilesManager.LoadNewLevel(tilesManager.GetRightLevel());
+            TilesManager.Instance.LoadNewLevel(TilesManager.Instance.GetRightLevel());
         }
         else if (transform.position.x < minXMap)
         {
             newPos.x = maxXMap -1;
-            tilesManager.LoadNewLevel(tilesManager.GetLeftLevel());
+            TilesManager.Instance.LoadNewLevel(TilesManager.Instance.GetLeftLevel());
         }
 
         if (transform.position.y > maxYMap)
         {
             newPos.y = minYMap;
-            tilesManager.LoadNewLevel(tilesManager.GetUpLevel());
+            TilesManager.Instance.LoadNewLevel(TilesManager.Instance.GetUpLevel());
         }
         else if (transform.position.y < minYMap)
         {
             newPos.y = maxYMap;
-            tilesManager.LoadNewLevel(tilesManager.GetDownLevel());
+            TilesManager.Instance.LoadNewLevel(TilesManager.Instance.GetDownLevel());
         }
 
         transform.position = newPos;

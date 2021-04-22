@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConveyerPlatform : MonoBehaviour
+public class ConveyerPlatform : MonoBehaviour, IEntity
 {
     public bool movingRight = true;
     public float movementSpeed = 1.0f;
