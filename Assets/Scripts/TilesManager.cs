@@ -90,6 +90,12 @@ public class TilesManager : MonoBehaviour
             ActualLevel = new Vector2Int(startinglevelPositionInMap.x, startinglevelPositionInMap.y);
     }
 
+    void Start()
+    {
+        EntityManager.Instance.Init(mapSize, levelSize);
+        EntityManager.Instance.loadPane(new Vector2Int(startinglevelPositionInMap.x, startinglevelPositionInMap.y));
+    }
+
     public int GetTilePositionInMap(Vector2Int tilePositionInLevel, Vector2Int levelPositionInMap)
     {
         int xdecal = tilePositionInLevel.x + levelSize.x * levelPositionInMap.x;
@@ -120,6 +126,8 @@ public class TilesManager : MonoBehaviour
                     solidTiles.Add(tilesMap[i].GetComponent<BoxCollider2D>());
             }
         }
+
+        EntityManager.Instance.loadPane(levelPositionInMap);
 
         // Set actual level
         ActualLevel.x = levelPositionInMap.x;
