@@ -6,6 +6,8 @@ public class Ennemy : MonoBehaviour
 {
     private bool firstDir;
 
+    public int ID;
+
     [SerializeField]
     private bool moveVertical;
     [SerializeField]
