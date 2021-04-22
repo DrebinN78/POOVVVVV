@@ -22,24 +22,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform GroundCheckPoint;
     [SerializeField] Transform RightWallCheckPoint;
     [SerializeField] Transform LeftWallCheckPoint;
-    private BoxCollider2D[] groundCheckColliders;
     private List<BoxCollider2D> groundList = new List<BoxCollider2D>();
-    private BoxCollider2D playerCollider;
 
     [Header("Animation")]
     [SerializeField] Animator animator;
 
+    [Header("MapBound - Gamemanager Should Give Those")]
+    [SerializeField] float minXMap = 0;
+    [SerializeField] float maxXMap = 40;
+    [SerializeField] float minYMap = -20;
+    [SerializeField] float maxYMap = 20;
+    private TilesManager tilesManager;
+
     private void Start()
     {
-        playerCollider = GetComponent<BoxCollider2D>();
-        groundCheckColliders = FindObjectsOfType<BoxCollider2D>(false);
-        foreach (BoxCollider2D col in groundCheckColliders)
-        {
-            if (col != playerCollider && (col.CompareTag("Ground") || col.CompareTag("Wall")))
-            {
-                groundList.Add(col);
-            }
-        }
+        tilesManager = TilesManager.Instance;
+        SetAllGroundColliders(tilesManager.solidTiles);
     }
 
     // Update is called once per frame
@@ -51,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         UpdateRightWallCheck();
         UpdateLeftWallCheck();
         UpdatePosition();
+        MapChangingPosition();
     }
 
     void UpdateInput()
@@ -120,7 +119,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 position.y = colliderFound.bounds.min.y - offsetY;
             }
-            //position.y = colliderFound.bounds.max.y + offsetY * gravity;
             transform.position = position;
         }
         else
@@ -199,9 +197,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void SetAllGroundColliders(BoxCollider2D[] listBoxCollider)
+    public void SetAllGroundColliders(List<BoxCollider2D> listBoxCollider)
     {
-        groundCheckColliders = listBoxCollider;
+        groundList.Clear();
+        groundList = listBoxCollider;
     }
 
     private void OnGUI()
@@ -213,6 +212,7 @@ public class PlayerMovement : MonoBehaviour
         GUILayout.Label("isOnGround = " + isOnGround);
         GUILayout.Label("gravity = " + gravity);
         GUILayout.Label("ySpeed = " + ySpeed);
+        GUILayout.Label("groundList" + groundList);
         GUILayout.EndVertical();
     }
 
@@ -222,5 +222,33 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = GameManager.Instance.Respawn();
         }
+    }
+
+    void MapChangingPosition()
+    {
+        Vector3 newPos = transform.position;
+        if (transform.position.x > maxXMap)
+        {
+            newPos.x = minXMap + 1;
+            tilesManager.LoadNewLevel(tilesManager.GetRightLevel());
+        }
+        else if (transform.position.x < minXMap)
+        {
+            newPos.x = maxXMap -1;
+            tilesManager.LoadNewLevel(tilesManager.GetLeftLevel());
+        }
+
+        if (transform.position.y > maxYMap)
+        {
+            newPos.y = minYMap;
+            tilesManager.LoadNewLevel(tilesManager.GetUpLevel());
+        }
+        else if (transform.position.y < minYMap)
+        {
+            newPos.y = maxYMap;
+            tilesManager.LoadNewLevel(tilesManager.GetDownLevel());
+        }
+
+        transform.position = newPos;
     }
 }
