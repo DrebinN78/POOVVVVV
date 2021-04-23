@@ -45,6 +45,7 @@ public class EntityManager : MonoBehaviour
         {
             int x = Mathf.FloorToInt(entity.X / paneSixe.x);
             int y = Mathf.FloorToInt(entity.Y / paneSixe.y);
+            if(x>=mapSize.x || y>=mapSize.y)
             if (panes[x, y] == null)
                 panes[x, y] = new List<Edentity>();
             panes[x,y].Add(entity);
@@ -73,14 +74,24 @@ public class EntityManager : MonoBehaviour
 
     private void LoadEntity(Edentity entity)
     {
-        GameObject gameObject;
-        //if (entity.type == 1)
-        //    gameObject = data.EnemyPrefab[entity.p1];
-        //else
-            gameObject = data.Prefab[int.Parse(entity.T)];
+        GameObject gameObject = null;
+        if (entity.T == 1.ToString())
+        {
+            if (data.EnemyPrefab.Length > int.Parse(entity.P1))
+                gameObject = data.EnemyPrefab[int.Parse(entity.P1)];
+        }
+        else
+        {
+            if(data.Prefab.Length> int.Parse(entity.T))
+                gameObject = data.Prefab[int.Parse(entity.T)];
+        }
+
+        if(gameObject==null)
+            return;
         GameObject instance = Instantiate(gameObject, parent.transform);
         Vector3 vector = new Vector3(entity.localX, -entity.localY);
         instance.transform.localPosition = vector;
+        instance.GetComponent<IEntity>().InitEntity(int.Parse(entity.P1), int.Parse(entity.P2), int.Parse(entity.P3), int.Parse(entity.P4), int.Parse(entity.P5), int.Parse(entity.P6));
         gameObjects.Add(instance);
     }
 }
