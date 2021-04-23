@@ -79,9 +79,20 @@ public class TilesManager : MonoBehaviour
 
                 // Add new tile in map list
                 tilesMap.Add(newTile);
-                
+
                 if (map[tilePositionInMap] >= 80 && map[tilePositionInMap] <= 678)
+                {
                     solidTiles.Add(tilesMap[i].GetComponent<BoxCollider2D>());
+                }
+                else if ((map[tilePositionInMap] >= 6 && map[tilePositionInMap] <= 9)
+                    || (map[tilePositionInMap] >= 49 && map[tilePositionInMap] <= 50)
+                    || (map[tilePositionInMap] >= 1080 && map[tilePositionInMap] <= 1085)
+                    || (map[tilePositionInMap] >= 1120 && map[tilePositionInMap] <= 1125)
+                    || (map[tilePositionInMap] >= 1160 && map[tilePositionInMap] <= 1165))
+                {
+                    tilesMap[i].GetComponent<BoxCollider2D>().isTrigger = true;
+                    tilesMap[i].tag = "Ennemy";
+                }
             }
 
         }
@@ -123,7 +134,25 @@ public class TilesManager : MonoBehaviour
             {
                 newSpriteRenderer.sprite = tiles[map[tilePositionInMap]];
                 if (map[tilePositionInMap] >= 80 && map[tilePositionInMap] <= 678)
+                {
+                    tilesMap[i].GetComponent<BoxCollider2D>().isTrigger = false;
+                    tilesMap[i].tag = "Untagged";
                     solidTiles.Add(tilesMap[i].GetComponent<BoxCollider2D>());
+                }
+                else if ((map[tilePositionInMap] >= 6 && map[tilePositionInMap] <= 9)
+                    || (map[tilePositionInMap] >= 49 && map[tilePositionInMap] <= 50)
+                    || (map[tilePositionInMap] >= 1080 && map[tilePositionInMap] <= 1085)
+                    || (map[tilePositionInMap] >= 1120 && map[tilePositionInMap] <= 1125)
+                    || (map[tilePositionInMap] >= 1160 && map[tilePositionInMap] <= 1165))
+                {
+                    tilesMap[i].GetComponent<BoxCollider2D>().isTrigger = true;
+                    tilesMap[i].tag = "Ennemy";
+                }
+                else
+                {
+                    tilesMap[i].GetComponent<BoxCollider2D>().isTrigger = false;
+                    tilesMap[i].tag = "Untagged";
+                }
             }
         }
 
