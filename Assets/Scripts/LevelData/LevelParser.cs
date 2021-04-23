@@ -25,7 +25,7 @@
 
 	   public void InitLevelsSO()
 	   {
-		   DeserializeObject("4kvvvv");
+		   DeserializeObject("MAP_POO");
 	   }
 	   
 

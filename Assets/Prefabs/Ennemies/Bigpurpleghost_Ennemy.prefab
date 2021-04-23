@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 542525790823285272}
   - component: {fileID: 542525790823285274}
   - component: {fileID: 542525790823285275}
-  - component: {fileID: 542525790823285268}
   - component: {fileID: 542525790823285278}
   m_Layer: 0
   m_Name: Bigpurpleghost_Ennemy
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 542525790823285279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.739, y: 0.445, z: 0}
-  m_LocalScale: {x: 9.76628, y: 8.012949, z: 1.3983188}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9950363732c37f49a79d5c0ec651149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   moveVertical: 0
   Speed: 3
 --- !u!61 &542525790823285275
@@ -114,40 +114,19 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0005809665, y: 0.00062877685}
+  m_Offset: {x: 0.02245617, y: -0.021246672}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.46}
+    oldSize: {x: 8, y: 5.75}
     newSize: {x: 2.18601, y: 1.5374202}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6417146, y: 0.457614}
+  m_Size: {x: 8.035536, y: 5.8389173}
   m_EdgeRadius: 0
---- !u!50 &542525790823285268
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542525790823285279}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!95 &542525790823285278
 Animator:
   serializedVersion: 3

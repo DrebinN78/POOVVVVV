@@ -12,10 +12,10 @@ public class Entity
 
 public class EntityManager : MonoBehaviour
 {
-    public List<Entity> entities = new List<Entity>();
     public EntityData data;
+    public LevelScriptableObject levelData;
 
-    private List<Entity>[,] panes;
+    private List<Edentity>[,] panes;
     private List<GameObject> gameObjects = new List<GameObject>();
     private GameObject parent = null;
 
@@ -40,16 +40,16 @@ public class EntityManager : MonoBehaviour
 
     public void Init(Vector2Int mapSize,Vector2Int paneSixe)
     {
-        panes = new List<Entity>[mapSize.x, mapSize.y];
-        foreach (var entity in entities)
+        panes = new List<Edentity>[mapSize.x, mapSize.y];
+        foreach (var entity in levelData.mapData.Data.EdEntities.Edentity)
         {
-            int x = Mathf.FloorToInt(entity.pos.x / paneSixe.x);
-            int y = Mathf.FloorToInt(entity.pos.y / paneSixe.y);
+            int x = Mathf.FloorToInt(entity.X / paneSixe.x);
+            int y = Mathf.FloorToInt(entity.Y / paneSixe.y);
             if (panes[x, y] == null)
-                panes[x, y] = new List<Entity>();
+                panes[x, y] = new List<Edentity>();
             panes[x,y].Add(entity);
-            entity.pos.x %= paneSixe.x;
-            entity.pos.y %= paneSixe.y;
+            entity.localX = entity.X % paneSixe.x;
+            entity.localY = entity.Y % paneSixe.y;
         }
 
         parent = new GameObject();
@@ -71,10 +71,15 @@ public class EntityManager : MonoBehaviour
         }
     }
 
-    private void LoadEntity(Entity entity)
+    private void LoadEntity(Edentity entity)
     {
-        GameObject instance = Instantiate(data.Prefab[entity.type], parent.transform);
-        Vector3 vector = new Vector3(entity.pos.x, -entity.pos.y);
+        GameObject gameObject;
+        //if (entity.type == 1)
+        //    gameObject = data.EnemyPrefab[entity.p1];
+        //else
+            gameObject = data.Prefab[int.Parse(entity.T)];
+        GameObject instance = Instantiate(gameObject, parent.transform);
+        Vector3 vector = new Vector3(entity.localX, -entity.localY);
         instance.transform.localPosition = vector;
         gameObjects.Add(instance);
     }

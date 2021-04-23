@@ -15,13 +15,32 @@ MonoBehaviour:
   Prefab:
   - {fileID: 1666379017712314510, guid: 144f8797934240a4d97df473bfce3bcd, type: 3}
   - {fileID: 2161323645600610969, guid: 851ab48ff2c926a4095c065bbc5fe661, type: 3}
+  - {fileID: 6335986083703854150, guid: 15c7b339089883e4785c99c09bd0e84e, type: 3}
+  - {fileID: 4021128474294464472, guid: 1c8a75a047d51a440a32be0b647398fc, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 3620832139641342837, guid: 6bdf0d7be66e40e48a906f4bbace1305, type: 3}
+  - {fileID: 7494758441269080536, guid: 0eb4a221e6479fd4aa3e52938c8b6c50, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  EnemyPrefab:
+  - {fileID: 542525790823285279, guid: b0d79db17438e2d429e28d0556308c49, type: 3}
+  - {fileID: 2161323645600610969, guid: 851ab48ff2c926a4095c065bbc5fe661, type: 3}
+  - {fileID: 1752179826516918941, guid: 2b1b061f6d28c2446bde8aca2d635a05, type: 3}
+  - {fileID: 2537371953044227420, guid: d7006ee678a68ed4e8f558edd1e2a121, type: 3}
+  - {fileID: 3162727321604632942, guid: bcc464baf7046cb4c85337457ae8cdb2, type: 3}
+  - {fileID: 6047325676766389988, guid: baf8c57a2f6b3ca4fb701370d17446a5, type: 3}
+  - {fileID: 891465775873873403, guid: d0475e648a875cf46a08b156f57a1d27, type: 3}
+  - {fileID: 2537371953044227420, guid: 565f60a0dd5055340befb822e9089b55, type: 3}
+  - {fileID: 2537371953044227420, guid: 13ccee896c18ec945b4fedd9c4f78b74, type: 3}
+  - {fileID: 6016628255648016249, guid: 812d26abbf392c749af6c4a2b1a20de9, type: 3}
+  - {fileID: 4136880040861190427, guid: be44cf35594bdef488e896ce108d0937, type: 3}
+  - {fileID: 6375077207227054931, guid: 96de8b94b8c576e40b8f982db14c5507, type: 3}
+  - {fileID: 1666379017712314510, guid: 144f8797934240a4d97df473bfce3bcd, type: 3}
+  - {fileID: 6268269115243823150, guid: 815e1ff62e52d4243a5c5dc188cde151, type: 3}
+  - {fileID: 2537371953044227420, guid: 195190d05ba72474c9c8b8c9cadf719c, type: 3}
+  - {fileID: 6133664261092604359, guid: 525df7a61c18bec4b94f7986ffc4f138, type: 3}
+  - {fileID: 147613151702472769, guid: 2fad812c94117654dbfe6d52afbd3ec2, type: 3}
