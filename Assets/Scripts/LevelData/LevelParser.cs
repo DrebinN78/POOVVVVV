@@ -45,7 +45,7 @@
 			   i.Data.EdEntities.Edentity[1].X + "\t" +
 			   i.Data.LevelMetaData.EdLevelClass[0].Enemytype + "\t" + " ...");
 
-		   Resources.Load<LevelScriptableObject>("Levels/Level_0").mapData = i;
+		   Resources.Load<LevelScriptableObject>("Levels/Level_1").mapData = i;
 	   }
    }
    
@@ -84,9 +84,9 @@
    [Serializable]
    public class Edentity {
 		[XmlAttribute(AttributeName="x")]
-		public string X { get; set; }
+		public int X { get; set; }
 		[XmlAttribute(AttributeName="y")]
-		public string Y { get; set; }
+		public int Y { get; set; }
 		[XmlAttribute(AttributeName="t")]
 		public string T { get; set; }
 		[XmlAttribute(AttributeName="p1")]
@@ -103,7 +103,10 @@
 		public string P6 { get; set; }
 		[XmlText]
 		public string Text { get; set; }
-	}
+		// custom variables !
+		public int localX; 
+		public int localY;
+   }
 
    //[XmlRoot(ElementName="edEntities"), Serializable]
    [Serializable]
@@ -139,7 +142,7 @@
 		[XmlAttribute(AttributeName="enemyy2")]
 		public string Enemyy2 { get; set; }
 		[XmlAttribute(AttributeName="enemytype")]
-		public string Enemytype { get; set; }
+		public int Enemytype { get; set; }
 		[XmlAttribute(AttributeName="warpdir")]
 		public string Warpdir { get; set; }
 	}
@@ -157,9 +160,9 @@
 		[XmlElement(ElementName="MetaData")]
 		public MetaData MetaData { get; set; }
 		[XmlElement(ElementName="mapwidth")]
-		public string Mapwidth { get; set; }
+		public int Mapwidth { get; set; }
 		[XmlElement(ElementName="mapheight")]
-		public string Mapheight { get; set; }
+		public int Mapheight { get; set; }
 		[XmlElement(ElementName="levmusic")]
 		public string Levmusic { get; set; }
 		[XmlElement(ElementName="contents")]
