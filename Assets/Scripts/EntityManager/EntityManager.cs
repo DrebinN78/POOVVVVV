@@ -45,7 +45,8 @@ public class EntityManager : MonoBehaviour
         {
             int x = Mathf.FloorToInt(entity.X / paneSixe.x);
             int y = Mathf.FloorToInt(entity.Y / paneSixe.y);
-            if(x>=mapSize.x || y>=mapSize.y)
+            if (x >= mapSize.x || y >= mapSize.y)
+                continue;
             if (panes[x, y] == null)
                 panes[x, y] = new List<Edentity>();
             panes[x,y].Add(entity);
